@@ -3,8 +3,8 @@ import io from "socket.io-client";
 import { toast } from "react-toastify";
 import axios from "axios";
 
-const SOCKET_SERVER = process.env.REACT_APP_SOCKET_SERVER || "http://localhost:8080";
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080/api";
+const SOCKET_SERVER = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080/";
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080/";
 
 const useGameSocket = (gameId, currentUser, fetchGame, setGame, setWhitePlayer, setBlackPlayer) => {
     const [socket, setSocket] = useState(null);
@@ -89,7 +89,7 @@ const useGameSocket = (gameId, currentUser, fetchGame, setGame, setWhitePlayer, 
 
         try {
             const response = await axios.post(
-                `${API_BASE_URL}/game/${gameId}/respond-draw`,
+                `${API_BASE_URL}/api/game/${gameId}/respond-draw`,
                 {
                     playerId: currentUser._id,
                     accept,

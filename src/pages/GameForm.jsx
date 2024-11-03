@@ -9,14 +9,14 @@ const GameForm = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  const baseUrl = process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
   const handleCreateGame = async () => {
     setLoading(true);
     try {
       const playerId = JSON.parse(localStorage.getItem("user"))._id;
-      const response = await axios.post(
-        "http://localhost:8080/api/game/create",
-        { playerId }
-      );
+      const response = await axios.post(`${baseUrl}/api/game/create`, {
+        playerId,
+      });
       if (response.status === 201) {
         toast.success("Game created successfully!", {
           autoClose: 1000,
@@ -41,10 +41,9 @@ const GameForm = () => {
     setLoading(true);
     try {
       const playerId = JSON.parse(localStorage.getItem("user"))._id;
-      const response = await axios.post(
-        `http://localhost:8080/api/game/join/${gameId}`,
-        { playerId }
-      );
+      const response = await axios.post(`${baseUrl}/api/game/join/${gameId}`, {
+        playerId,
+      });
       if (response.status === 200) {
         toast.success("Game joined successfully!", {
           autoClose: 1000,

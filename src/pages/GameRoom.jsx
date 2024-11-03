@@ -14,7 +14,7 @@ import MovesHistory from "../components/MoveHistory";
 import useGameSocket from "../hooks/useGameSocket";
 
 const API_BASE_URL =
-  process.env.REACT_APP_API_BASE_URL || "http://localhost:8080/api";
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
 
 const GameRoom = () => {
   const { gameId } = useParams();
@@ -28,7 +28,7 @@ const GameRoom = () => {
 
   const fetchGame = async () => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/game/${gameId}`);
+      const response = await axios.get(`${API_BASE_URL}/api/game/${gameId}`);
       setGame(response.data.game);
       setWhitePlayer(response.data.game.whitePlayer);
       setBlackPlayer(response.data.game.blackPlayer);
@@ -81,7 +81,7 @@ const GameRoom = () => {
     }
 
     try {
-      const response = await axios.post(`${API_BASE_URL}/game/${gameId}/move`, {
+      const response = await axios.post(`${API_BASE_URL}/api/game/${gameId}/move`, {
         from: sourceSquare,
         to: targetSquare,
         promotion, // Will be 'q', 'r', 'b', or 'n' for promotion moves
@@ -103,7 +103,7 @@ const GameRoom = () => {
 
     try {
       const response = await axios.post(
-        `${API_BASE_URL}/game/${gameId}/resign`,
+        `${API_BASE_URL}/api/game/${gameId}/resign`,
         { playerId: currentUser._id }
       );
 
@@ -118,7 +118,7 @@ const GameRoom = () => {
 
     try {
       const response = await axios.post(
-        `${API_BASE_URL}/game/${gameId}/offer-draw`,
+        `${API_BASE_URL}/api/game/${gameId}/offer-draw`,
         { playerId: currentUser._id }
       );
 
