@@ -22,10 +22,6 @@ const PlayerCard = ({ player, color, isCurrentTurn, timeLeft }) => (
         <h3 className="text-lg font-medium text-white">
           {player?.username || "Waiting..."}
         </h3>
-        <div className="flex items-center space-x-2 text-sm text-gray-400">
-          <Clock className="w-4 h-4" />
-          <span>{timeLeft || "10:00"}</span>
-        </div>
       </div>
     </div>
   </div>

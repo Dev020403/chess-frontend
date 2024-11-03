@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import AuthForm from "./components/LoginRegister";
-import GameForm from "./components/GameForm";
-import GameRoom from "./components/GameRoom";
+import AuthForm from "./pages/LoginRegister";
+import GameForm from "./pages/GameForm";
+import GameRoom from "./pages/GameRoom";
 
 const App = () => {
     return (
